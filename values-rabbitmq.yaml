@@ -462,7 +462,7 @@ volume:
     host_path: /var/lib/rabbitmq
   chown_on_start: true
   enabled: true
-  class_name: general
+  class_name: standard
   size: 768Mi
 
 # Hook break for helm2.

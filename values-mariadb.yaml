@@ -64,7 +64,7 @@ pod:
     server:
       mariadb:
         readiness:
-          enabled: true
+          enabled: false # "pidof mysqld" always fails
           disk_usage_percent: 99
           params:
             initialDelaySeconds: 30
@@ -173,7 +173,7 @@ pod:
         operator: Exists
         effect: NoSchedule
   replicas:
-    server: 3
+    server: 1
     controller: 1
   lifecycle:
     upgrades:
@@ -277,12 +277,10 @@ volume:
     host_path: "/tmp/mysql-data"
   chown_on_start: true
   enabled: true
-  class_name: general
+  class_name: standard
   size: 5Gi
   backup:
-    enabled: true
-    class_name: general
-    size: 5Gi
+    enabled: false
 
 jobs:
   cluster_wait:
